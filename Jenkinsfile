@@ -41,5 +41,10 @@ pipeline {
         docker_build(imageName: 'vismaycloud88/java-app', tag: "${env.BUILD_NUMBER}")
             }
         }
+        stage('Docker Push') {
+    steps {
+        docker_push(imageName: 'vismaycloud88/java-app', tag: "${env.BUILD_NUMBER}", credentialsId: 'docker-hub-credentials')
+            }
+        }
     }
 }
