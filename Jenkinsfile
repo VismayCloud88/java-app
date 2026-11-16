@@ -36,5 +36,10 @@ pipeline {
                 maven_build()
             }
         }
+        stage('Docker Build') {
+    steps {
+        docker_build(imageName: 'vismaycloud88/java-app', tag: "${env.BUILD_NUMBER}")
+            }
+        }
     }
 }
